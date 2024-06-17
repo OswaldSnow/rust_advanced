@@ -2,10 +2,10 @@
 pub struct Foo;
 
 impl Foo{
-    pub fn mutate_and_share(&mut self) -> &Self {
+    pub fn mutate_and_share(&mut self) -> &mut Self {
         self
     }
-    pub fn share(&self) {
+    pub fn share(&mut self) {
 
     }
 
