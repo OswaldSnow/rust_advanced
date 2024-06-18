@@ -123,12 +123,15 @@ fn main() {
 
 
     // 复杂的例子
+    // 会提示错误
     let mut list = List {
         manager: Manager {
             text: "hello"
         }
     };
 
+    // get_interface 方法中获取了list的可变引用
+    // 参数 &'a mut self
     list.get_interface().noop();
 
     println!("Interface should be dropped here and the borrow released");
