@@ -36,6 +36,8 @@ fn main() {
 
     println!("{:#?}",folks);
 
+    // enumerate
+
 }
 
 struct Counter {
