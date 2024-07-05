@@ -24,6 +24,7 @@ fn main() {
     // 以下代码会编译报错
     // 编译器认为 对于参数 map 发生了两次可变借用
     // 解决思路是在函数体内不要发生两次可变借用
+    #[allow(unused)]
     fn get_default<'m, K, V>(map: &'m mut HashMap<K, V>, key: K) -> &'m mut V
     where
         K: Clone + Eq + Hash,
