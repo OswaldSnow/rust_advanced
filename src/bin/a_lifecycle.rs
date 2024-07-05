@@ -61,6 +61,7 @@ fn main() {
 
     // 生命周期约束
     // b >= a 写法
+    #[allow(unused)]
     struct DoubleRef<'a,'b:'a, T> {
         r: &'a T,
         s: &'b T
@@ -68,6 +69,7 @@ fn main() {
 
 
     // 符合上方生命周期消除第2条规则的普通函数
+    #[allow(unused)]
     fn fn_elision(x: &i32) -> &i32 {
         x
     }
@@ -138,9 +140,10 @@ fn main() {
 
     // 下面的调用会失败，因为同时有不可变/可变借用
     // 但是Interface在之前调用完成后就应该被释放了
-    use_list(&list);
+    // use_list(&list);
 }
 
+#[allow(unused)]
 // 复杂的例子
 struct Interface<'a> {
     manager: &'a mut Manager<'a>
@@ -152,6 +155,7 @@ impl<'a> Interface<'a> {
     }
 }
 
+#[allow(unused)]
 struct Manager<'a> {
     text: &'a str
 }
@@ -168,6 +172,7 @@ impl<'a> List<'a> {
     }
 }
 
+#[allow(unused)]
 fn use_list(list: &List) {
     println!("{}", list.manager.text);
 }

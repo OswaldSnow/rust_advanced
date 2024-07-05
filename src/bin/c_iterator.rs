@@ -40,10 +40,12 @@ fn main() {
 
 }
 
+#[allow(unused)]
 struct Counter {
     count: u32,
 }
 
+#[allow(unused)]
 impl Counter {
     fn new() -> Counter {
         Counter { count: 0 }
