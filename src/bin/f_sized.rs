@@ -16,7 +16,7 @@ fn main() {
 
     // 既然 rust 要求在编译器获取所有类型的大小
     // 那么对于泛型参数 T 如何在编译期间获取大小呢
-    fn generic<T>(t: T){
+    fn generic<T>(t: T) {
         // todo
     }
     // 泛型函数只能用于一切实现了 Sized 特征的类型上
@@ -24,12 +24,10 @@ fn main() {
     // fn generic<T: Sized>(t: T){}
     // 每一个在编译期能获取大小的类型都会实现 Sized 特征
 
-
     // Box 智能指针
     let b_str = Box::new("hello world");
     // Box 存放了一个指针 指向了堆上的内存数据
     // 这种方式可以存放动态数据了 因为 Box 本身的大小是固定的
-
 
     // Box<str>
     // 源类型是 &'static str（字符串字面量）
@@ -38,7 +36,5 @@ fn main() {
     // 因此，.into() 调用成功地执行了这个转换
     let s1: Box<str> = "Hello there!".into();
     let s2 = &*s1;
-    println!("s2 is {}",s2);
-
-
+    println!("s2 is {}", s2);
 }

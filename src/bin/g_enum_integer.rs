@@ -1,5 +1,5 @@
 #[allow(unused)]
-fn main(){
+fn main() {
     /*
     枚举和整数
      */
@@ -21,30 +21,28 @@ fn main(){
     match i1.try_into().unwrap() {
         MyEnum::A => {
             println!("get A")
-        },
+        }
         MyEnum::B => {
             println!("get B")
-        },
+        }
         MyEnum::C => {
             println!("get C")
-        },
-        _ =>{
+        }
+        _ => {
             println!("get NONE")
         }
     }
 
     // std::mem::transmute
     // unsafe 暂时不看
-
-
 }
 
 // A = 1
 // B C 会自动 +1
-enum MyEnum{
+enum MyEnum {
     A = 1,
     B,
-    C
+    C,
 }
 
 // i32 转换为 MY_ENUM

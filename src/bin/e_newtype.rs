@@ -13,7 +13,7 @@ fn main() {
 
     // 但是可以使用 new type 的方式
     let meter_1 = Meter(9);
-    println!("{}",meter_1);
+    println!("{}", meter_1);
 
     // 别名
     type MA = Meter;
@@ -26,15 +26,14 @@ fn main() {
 
     // 永不返回的函数类型 -> !
     // 永不返回的发散函数 diverging function
-
 }
 
 // new type 定义一个 元组结构体 包含一个 i32 类型
 // 这样就可以为 Meter 实现 Display 了
 struct Meter(i32);
 
-impl Display for Meter{
+impl Display for Meter {
     fn fmt(&self, f: &mut Formatter<'_>) -> std::fmt::Result {
-        write!(f , "the meter is {}",self.0)
+        write!(f, "the meter is {}", self.0)
     }
 }

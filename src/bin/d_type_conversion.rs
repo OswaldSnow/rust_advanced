@@ -1,6 +1,6 @@
 use std::sync::Arc;
 
-fn main(){
+fn main() {
     /*
     类型转换
      */
@@ -8,8 +8,6 @@ fn main(){
     // 一个复杂类型派生 Clone 需要其内部的所有类型都能派生 Clone
 
     // 阅读一遍 to be continued
-
-
 }
 
 #[allow(unused)]

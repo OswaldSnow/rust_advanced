@@ -42,7 +42,6 @@ fn main() {
         // }
         // // 综上 编译器认为 在同一个作用域内进行了多次可变借用
 
-
         // 解决方法 1
         // 直接使用 rust 提供的 entry 方法
         // map.entry(key.clone()).or_insert_with(V::default)
@@ -56,18 +55,15 @@ fn main() {
             map.insert(key.clone(), V::default());
             map.get_mut(&key).unwrap()
         }
-
     }
-
 
     // 生命周期约束
     // b >= a 写法
     #[allow(unused)]
-    struct DoubleRef<'a,'b:'a, T> {
+    struct DoubleRef<'a, 'b: 'a, T> {
         r: &'a T,
-        s: &'b T
+        s: &'b T,
     }
-
 
     // 符合上方生命周期消除第2条规则的普通函数
     #[allow(unused)]
@@ -86,7 +82,6 @@ fn main() {
         f
     }
 
-
     // 引用的生命周期从借用处开始 一直持续到最后一次使用的地方
     let mut s = String::from("hello");
 
@@ -97,7 +92,6 @@ fn main() {
 
     let r3 = &mut s;
     println!("{}", r3);
-
 
     // 生命周期消除规则的补充
 
@@ -124,13 +118,10 @@ fn main() {
     //     field: &'a T
     // }
 
-
     // 复杂的例子
     // 会提示错误
     let mut list = List {
-        manager: Manager {
-            text: "hello"
-        }
+        manager: Manager { text: "hello" },
     };
 
     // get_interface 方法中获取了list的可变引用
@@ -147,7 +138,7 @@ fn main() {
 #[allow(unused)]
 // 复杂的例子
 struct Interface<'a> {
-    manager: &'a mut Manager<'a>
+    manager: &'a mut Manager<'a>,
 }
 
 impl<'a> Interface<'a> {
@@ -158,7 +149,7 @@ impl<'a> Interface<'a> {
 
 #[allow(unused)]
 struct Manager<'a> {
-    text: &'a str
+    text: &'a str,
 }
 
 struct List<'a> {
@@ -168,7 +159,7 @@ struct List<'a> {
 impl<'a> List<'a> {
     pub fn get_interface(&'a mut self) -> Interface {
         Interface {
-            manager: &mut self.manager
+            manager: &mut self.manager,
         }
     }
 }

@@ -1,8 +1,5 @@
-fn main(){
+fn main() {
     /*
     Drop
      */
-
-
-
 }

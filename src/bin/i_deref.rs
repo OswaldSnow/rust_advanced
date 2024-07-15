@@ -49,13 +49,10 @@ fn main() {
     // T: Deref<Target=U> 可以将 &T 转换成 &U
     // T: DerefMut<Target=U> 可以将 &mut T 转换成 &mut U
     // T: Deref<Target=U> 可以将 &mut T 转换成 &U
-
-
-
 }
 
-fn display_str(s: &str){
-    println!("display_str {}",s);
+fn display_str(s: &str) {
+    println!("display_str {}", s);
 }
 
 // 定义元组结构体
@@ -64,7 +61,7 @@ struct MyBox<T>(T);
 // 实现 Deref 以及 DerefMut
 // 你只管实现 其他的交给编译器 QAQ
 // 以下代码的基础上就能实现上方的 三种转换规则
-impl<T> Deref for MyBox<T>{
+impl<T> Deref for MyBox<T> {
     type Target = T;
 
     fn deref(&self) -> &Self::Target {
@@ -73,14 +70,14 @@ impl<T> Deref for MyBox<T>{
 }
 
 // 稍做修改就能实现 &mut T -> &U 的转变
-impl<T> DerefMut for MyBox<T>{
+impl<T> DerefMut for MyBox<T> {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.0
     }
 }
 
-impl<T> MyBox<T>{
-    fn new(t: T) -> Self{
+impl<T> MyBox<T> {
+    fn new(t: T) -> Self {
         MyBox(t)
     }
 }
