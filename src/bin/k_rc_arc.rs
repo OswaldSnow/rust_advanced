@@ -1,4 +1,6 @@
 use std::rc::Rc;
+use std::sync::Arc;
+use std::thread;
 
 fn main() {
     /*
@@ -69,12 +71,26 @@ fn main() {
     // Rc<T> 获取的是不可变引用 且 不能应用在多线程场景
 
     // 多线程安全的 Rc =》 Arc =》 Atomic Rc（原子化RC）
+    let s_thread = Arc::new(String::from("支持多线程的 Rc Arc"));
+    for _ in 0..10 {
+        let s_clone = Arc::clone(&s_thread);
+        let _handle = thread::spawn(move || {
+            // println!("s === {s_clone}");
+            let _s_clone = s_clone;
+        });
+
+        println!("s_thread ref count === {}", Arc::strong_count(&s_thread))
+    }
+
+    // 以上两者对数据都是只读的
 }
 
+#[allow(unused)]
 struct Master {
     name: String,
 }
 
+#[allow(unused)]
 struct Slave {
     id: u32,
     name: String,
