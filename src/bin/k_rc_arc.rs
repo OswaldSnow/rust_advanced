@@ -7,6 +7,7 @@ fn main() {
     引用计数
     Rc
     Arc
+    Rc/Arc让一个数据可以拥有多个所有者
      */
 
     // rust 默认存在所有权 但是特殊情况下 多个变量可以拥有同一数据
@@ -24,7 +25,8 @@ fn main() {
     let rc1 = Rc::new(String::from("hello Rc"));
 
     // 使用 Rc::clone clone 一个 Rc
-    // 此种 clone 方式只 clone 了 Rc 而对于指向的数据 并没有发生 clone
+    // 此种 clone 方式只 clone 了 Rc
+    // 而对于指向的数据 并没有发生 clone
     // 也就是说目前 rc1 和 rc2 虽然是两个变量 但是都指向了同一块内存数据
     let rc2 = Rc::clone(&rc1);
 
