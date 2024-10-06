@@ -1,6 +1,3 @@
-use std::thread;
-use std::time::Duration;
-
 fn main() {
     /*
     多线程
