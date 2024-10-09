@@ -29,8 +29,8 @@ fn main() {
     // Deref 连续隐式转换
     let s2 = MyBox::new(String::from("hello rust"));
     display_str(&s2);
-    let s3 = &s2;
-    let s4 = s2.to_string();
+    let _s3 = &s2;
+    let _s4 = s2.to_string();
 
     // 引用归一
     // 对于上面的 “智能指针” 类型 正确实现 Deref 的情况下会编译器会自动解引用 指向内部类型
