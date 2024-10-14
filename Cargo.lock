@@ -3,6 +3,14 @@
 version = 3
 
 [[package]]
+name = "a_macro_derive"
+version = "0.1.0"
+dependencies = [
+ "quote",
+ "syn",
+]
+
+[[package]]
 name = "addr2line"
 version = "0.24.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -209,6 +217,7 @@ dependencies = [
 name = "rust_advanced"
 version = "0.1.0"
 dependencies = [
+ "a_macro_derive",
  "futures",
  "lazy_static",
  "tokio",

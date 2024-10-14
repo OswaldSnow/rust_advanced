@@ -1,0 +1,13 @@
+[package]
+name = "a_macro_derive"
+version = "0.1.0"
+edition = "2021"
+
+[lib]
+# 过程宏开关
+proc-macro = true
+
+[dependencies]
+# 定义过程宏需要的依赖
+quote = "1.0.37"
+syn = "2.0.79"
