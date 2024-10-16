@@ -6,4 +6,8 @@ impl Foo {
         self
     }
     pub fn share(&mut self) {}
+
+    pub fn for_example_fn() {
+        println!("This method is called for example");
+    }
 }

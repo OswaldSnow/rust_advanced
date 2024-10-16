@@ -12,6 +12,7 @@
    例如 1调用中执行了2秒 但是这2秒内，2调用任务可以继续执行
 */
 use std::time::{Duration, Instant};
+// use futures::executor::block_on;
 use tokio::time::sleep;
 
 #[tokio::main]
@@ -22,9 +23,9 @@ async fn main() {
     虽然每个任务都需要5秒才能完成，但由于它们是并发执行的
     所以总的等待时间仍然是5秒，而不是15秒。
      */
-    let task1 = a(); // 1调用
-    let task2 = a(); // 2调用
-    let task3 = a(); // 3调用
+    let task1 = async_fn(); // 1调用
+    let task2 = async_fn(); // 2调用
+    let task3 = async_fn(); // 3调用
 
     // 等待所有任务完成
     futures::join!(task1, task2, task3);
@@ -32,10 +33,21 @@ async fn main() {
     let action_interval = start_time.elapsed();
     // 5.0s
     println!("action_interval is {:.1?}", action_interval);
+
+    // block_on(async {
+    //     println!("some actions in block_on");
+    // });
 }
 
-async fn a() {
+async fn async_fn() {
     println!("开始计算...");
-    sleep(Duration::from_secs(5)).await; // 模拟耗时操作
+    // sleep(Duration::from_secs(5)).await; // 模拟耗时操作
+    a_inner_async_fn().await;
     println!("计算完成!");
+}
+
+async fn a_inner_async_fn() {
+    sleep(Duration::from_secs(3)).await; // 模拟耗时操作
+    println!("已经过去3s");
+    sleep(Duration::from_secs(2)).await; // 模拟耗时操作
 }
