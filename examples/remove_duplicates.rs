@@ -25,9 +25,12 @@ fn main() {
     // 快慢指针 ？
 
     let mut nums = vec![1, 1, 2, 2, 3, 4, 5];
-    // expect result nums is [1, 2, 3, 4, 5, 4, 5]，k is 5
+    // expect nums is [1, 2, 3, 4, 5, 4, 5]
     let k = remove_duplicates(&mut nums);
-    println!("nums: {:?}, k: {k}", nums);
+    // expect k is 5
+
+    assert_eq!(k, 5);
+    assert_eq!(nums, [1, 2, 3, 4, 5, 4, 5]);
 }
 
 fn remove_duplicates(nums: &mut Vec<i32>) -> i32 {

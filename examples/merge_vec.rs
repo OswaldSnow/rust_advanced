@@ -25,9 +25,9 @@ fn main() {
     let n = 3;
 
     merge(&mut nums1, m, &mut nums2, n);
+    // expect nums1 is [1, 2, 3, 4, 5, 6]
 
-    println!("{:?}", nums1);
-    // expect result is [1,2,3,4,5,6]
+    assert_eq!(nums1, [1, 2, 3, 4, 5, 6]);
 }
 
 fn merge(nums1: &mut Vec<i32>, m: i32, nums2: &mut Vec<i32>, n: i32) {

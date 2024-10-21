@@ -17,11 +17,12 @@ fn main() {
     不需要考虑数组中超出新长度后面的元素。
      */
     let mut nums = vec![1, 1, 1, 2, 2, 3];
-    // expect result nums is [1, 1, 2, 2, 3, _]
+    // expect nums is [1, 1, 2, 2, 3, _]
     let k = remove_duplicates_orderly(&mut nums);
     // expect k is 5
+
     assert_eq!(k, 5);
-    assert_eq!(nums, vec![1, 1, 2, 2, 3, 3]);
+    assert_eq!(nums, [1, 1, 2, 2, 3, 3]);
 }
 
 fn remove_duplicates_orderly(nums: &mut Vec<i32>) -> i32 {
